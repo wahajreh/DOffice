@@ -1,0 +1,481 @@
+{
+	"info": {
+		"_postman_id": "5daf9cbe-18b4-4c3b-a3df-33752e496ad2",
+		"name": "Appipo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21478356"
+	},
+	"item": [
+		{
+			"name": "UserInfo",
+			"item": [
+				{
+					"name": "create userinfo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n            \"UserId\": \"\",\r\n            \"ShopRegistered\": true,\r\n            \"UserEmail\": \"mughal@gmail.com\",\r\n            \"RegisterDate\": \"11/2/22\",\r\n            \"UserName\": \"null\",\r\n            \"Mobile\": \"03096263383\",\r\n            \"DOB\": \"4/2/1999\",\r\n            \"Address1\": \"Jinnah Gate\",\r\n            \"Address2\": \"Jinnah gate\",\r\n            \"PostalCode\": \"042\",\r\n            \"Unitnumber\": \"123456\",\r\n            \"SocialMediaAccount\": \"Facebook\",\r\n            \"Gender\": \"Male\", \"MarriedStatus\": \"Unmarried\",\r\n            \"Kid\": \"0\",\r\n            \"CitizenShip\": \"Pak\",\r\n            \"Employement\": \"Government\",\r\n            \"Industry\": \"AppSpot\",\r\n            \"JobRole\": \"Developer\",\r\n            \"HideDetail\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/Users/createUser",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"Users",
+								"createUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserInfo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/Users",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"Users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"Kid\":\"iiiiiii\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/Users/U8178djee",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"Users",
+								"U8178djee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUser_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/Users/kjadhehsf",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"Users",
+								"kjadhehsf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PiggyBank",
+			"item": [
+				{
+					"name": "create PiggyBank",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserId\":\"U0000aaaa\",\r\n    \"Timeofwithdrawalrequest\":\"\",\r\n    \"Dateofwithdrawalrequest\":\"\",\r\n    \"PiggyBankbalance\":\"\",\r\n    \"Currency\":\"\",\r\n    \"Withdrawal_referralrefnumber\":\"\",\r\n    \"Floatingaccount\":\"\",\r\n    \"Withdrawamount\":\"\",\r\n    \"Withdrawmethod\":\"\",\r\n    \"Bankaccountnumber\":\"\",\r\n    \"Paynownumber\":\"\",\r\n    \"BankTransactionnumber\":\"\",\r\n    \"MobileOTPpassed\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/PiggyBank",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"PiggyBank"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPiggyBankData by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/PiggyBank/U0000aaaa",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"PiggyBank",
+								"U0000aaaa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get last PiggyBankData by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/PiggyBank/U0000aaaa",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"PiggyBank",
+								"U0000aaaa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserCArt",
+			"item": [
+				{
+					"name": "create Cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserId\":\"U0000aaaa\",\r\n    \"productId\":\"Pabcsds\",\r\n    \"Time\":\"\",\r\n    \"Date\":\"\",\r\n    \"SellerId\":\"abc\",\r\n    \"Option\":\"\",\r\n    \"Quantity\":\"\",\r\n    \"Balancequantityoftheproduct\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/UserCart",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"UserCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cart item",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/UserCart/U0000aaaa",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"UserCart",
+								"U0000aaaa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete cart item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/UserCart/U0000aaaa/abc",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"UserCart",
+								"U0000aaaa",
+								"abc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ShopProduct",
+			"item": [
+				{
+					"name": "create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CreatebyUserID\":\"\",\r\n    \"ProductID\":\"\",\r\n    \"Displaypage\":\"\",\r\n    \"Time\":\"\",\r\n    \"Date\":\"\",\r\n    \"Condition\":\"\",\r\n    \"Deliveryservice\":\"\",\r\n    \"SetDefault\":true,\r\n    \"Requireddelivery\":true,\r\n    \"Standarddeliveryprice\":\"\",\r\n    \"Standarddeliveryquantity\":\"\",\r\n    \"Freedeliverycondition\":\"\",\r\n    \"Offerfreedelivery\":\"\",\r\n    \"Returnable\":true,\r\n    \"Exchangeable\":true,\r\n    \"Selfcollection\":\"\",\r\n    \"Sellerdeliveryprice\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/ShopProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"ShopProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all product by userid",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shop",
+			"item": [
+				{
+					"name": "create shop",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "UserID\n",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "FullNameinNRIC",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "Shopregisterdate",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "NRIC",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "NRICattachment",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "UENregistered",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "GSTregistered",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "Shopbanner",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "ShopAvatar",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "Yourstoryvideo",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "Shopname_companyname",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "UEN",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "Companyaddress",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "InquiryEmail",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "accountaddresschangetoWarehouseAddress",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "orderreceivingaddresschangetoPOemailaddress",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "Shoptelephone",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "Whatsapp_receive",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "Companywebsite",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "Shopmanager",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "AppipoPartner",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "Shopstatus",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "Uploadphoto",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "SocialAccount",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "shopadmin",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8088/Shop",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"Shop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create shop Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "UserID\n",
+									"value": "U0000aaaa",
+									"type": "text"
+								},
+								{
+									"key": "NRICattachment",
+									"type": "file",
+									"src": "/C:/Users/Wahaj.Rehman/OneDrive - HRSG Outsourcing Pvt. Ltd/Pictures/Capture.PNG"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8088/Shop",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"Shop"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

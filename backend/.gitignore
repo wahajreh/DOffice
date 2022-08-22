@@ -1,0 +1,8 @@
+node_modules
+build
+npm-debug.log
+# uncomment those if necessary
+# .evn
+# /config
+.DS_Store
+desktop.ini

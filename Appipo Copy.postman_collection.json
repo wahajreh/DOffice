@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "630c81c8-c8e5-4780-9b38-1eeb725d8386",
+		"name": "Appipo Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21478356"
+	},
+	"item": [
+		{
+			"name": "UserInfo",
+			"item": [
+				{
+					"name": "GetUserInfo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"UserId\":\"\",\r\n    \"ShopRegistered\":true,\r\n    \"UserEmail\":\"atring\",\r\n    \"RegisterDate\":\"atring\",\r\n    \"UserName\":\"atring\",\r\n    \"Mobile\":\"atring\",\r\n    \"DOB\":\"atring\",\r\n    \"Address1\":\"atring\",\r\n    \"Address2\":\"atring\",\r\n    \"PostalCode\":\"atring\",\r\n    \"Unitnumber\":\"atring\",\r\n    \"SocialMediaAccount\":\"atring\",\r\n    \"Gender\":\"atring\",\r\n    \"MarriedStatus\":\"atring\",\r\n    \"Kid\":\"atring\",\r\n    \"CitizenShip\":\"atring\",\r\n    \"Employement\":\"atring\",\r\n    \"Industry\":\"atring\",\r\n    \"JobRole\":\"atring\",\r\n    \"HideDetail\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://appipo.herokuapp.com/Users/createUser",
+							"protocol": "https",
+							"host": [
+								"appipo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Users",
+								"createUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserInfo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://appipo.herokuapp.com/Users",
+							"protocol": "https",
+							"host": [
+								"appipo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"ShopRegistered\":true,\r\n    \"UserEmail\":\"wahaj1112\",\r\n    \"RegisterDate\":\"atring\",\r\n    \"UserName\":\"atring\",\r\n    \"Mobile\":\"atring\",\r\n    \"DOB\":\"atring\",\r\n    \"Address1\":\"atring\",\r\n    \"Address2\":\"atring\",\r\n    \"PostalCode\":\"atring\",\r\n    \"Unitnumber\":\"atring\",\r\n    \"SocialMediaAccount\":\"atring\",\r\n    \"Gender\":\"atring\",\r\n    \"MarriedStatus\":\"atring\",\r\n    \"Kid\":\"atring\",\r\n    \"CitizenShip\":\"atring\",\r\n    \"Employement\":\"atring\",\r\n    \"Industry\":\"atring\",\r\n    \"JobRole\":\"atring\",\r\n    \"HideDetail\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://appipo.herokuapp.com/Users/U0000aaaa",
+							"protocol": "https",
+							"host": [
+								"appipo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Users",
+								"U0000aaaa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUser_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://appipo.herokuapp.com/Users/kjadhehsf",
+							"protocol": "https",
+							"host": [
+								"appipo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Users",
+								"kjadhehsf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PiggyBank Copy",
+			"item": [
+				{
+					"name": "create PiggyBank",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserId\":\"U0000aaaa\",\r\n    \"Timeofwithdrawalrequest\":\"\",\r\n    \"Dateofwithdrawalrequest\":\"\",\r\n    \"PiggyBankbalance\":\"\",\r\n    \"Currency\":\"\",\r\n    \"Withdrawal_referralrefnumber\":\"\",\r\n    \"Floatingaccount\":\"\",\r\n    \"Withdrawamount\":\"\",\r\n    \"Withdrawmethod\":\"\",\r\n    \"Bankaccountnumber\":\"\",\r\n    \"Paynownumber\":\"\",\r\n    \"BankTransactionnumber\":\"\",\r\n    \"MobileOTPpassed\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/PiggyBank",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"PiggyBank"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPiggyBankData by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/PiggyBank/U0000aaaa",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"PiggyBank",
+								"U0000aaaa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get last PiggyBankData by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/PiggyBank/U0000aaaa",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"PiggyBank",
+								"U0000aaaa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

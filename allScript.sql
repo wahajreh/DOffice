@@ -1,0 +1,54 @@
+--create database 
+
+use appipo
+
+--CREATE TABLE dbo.UserInfo
+--(
+--    UserId varchar(10),
+--    ShopRegistered bit default 0,
+--    Email varchar(20),
+--    RegisterDate date,
+--	Mobile varchar(15),
+--	ODB date,
+--	Address1 varchar(100),
+--	Address2 varchar(100),
+--	PostalCode varchar(10),
+--	UnitNumber int,
+--	SocialMediaAccount varchar(10),
+--	Gender varchar(10),
+--	MarriedStatus varchar(10),
+--	Kids varchar(10),
+--	CitizenShip varchar(10),
+--	Eployement varchar(10),
+--	Industry varchar(10),
+--	JobRole varchar(10),
+--	HideDetail bit DEFAULT 0,
+--);
+
+--CREATE TABLE dbo.Shop
+--(
+--    UserId varchar(10),	
+--	FullName varchar(20),
+--	ShopRegisterDate date,
+--	NRIC varchar(90),
+--	NRIC_Attachment varchar(20),
+--	UENRegistered bit default 0,
+--	SocialAccount varchar(20),
+--	ShopBanner varchar(max),
+--	ShopAvatar varchar(max),
+--	YourStoryVedio varchar(max),
+--	ShopName varchar(20),
+--	UEN varchar(20),
+--	Address1 varchar(20),
+--	UnitNumber varchar(20),
+--	PostalCode varchar(20),
+--	Telephone varchar(20),
+--	Fax varchar(20),
+--	CompanyWeb varchar(200),
+--	ShopManager varchar(200),
+--	AppipoPartner bit default 0,
+--	ShopStatus bit default 0,
+--	Emailorder varchar(50),
+--	Emailenquery varchar(50),
+--	Whatsapp varchar(50),
+--)

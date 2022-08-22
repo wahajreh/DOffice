@@ -1,0 +1,34 @@
+POST http://localhost:8000/api/user
+
+{
+    "firstName": "hhh",
+    "lastName": "hhh",
+    "emailAddress": "hhh",
+    "password": "hhh",
+    "address": "hhh",
+    "city": "hhh",
+    "state": "hhh",
+    "postalCode": "hhh",
+    "mobileNo": "hhh",
+    "imageUrl": "hhh",
+    "subscriptionPlan": "hhh",
+    "referralCode": "hhh",
+    "otpNumber": "hhh",
+    "userType": "hhh",
+    "playerId": "hhh",
+    "deviceType": "hhh",
+    "deviceId": "hhh",
+    "socialType": "hhh",
+    "socialId": "hhh",
+    "isActivate": "hhh",
+    "isVerify": "hhh",
+    "dateCreated": "hhh",
+    "dateUpdated": "hhh",
+    "isDeleted": "hhh",
+    "userBusinessIsActive": "hhh",
+    "userBusinessIsAdded": "hhh"
+}
+
+
+
+POST http://localhost:8000/api/sample

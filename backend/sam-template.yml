@@ -1,0 +1,161 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Serverless Express Application/API powered by API Gateway and Lambda
+Parameters:
+  DomainName:
+    Type: String
+    Description: API Domain name
+    Default: ''
+  
+  Environment:
+    Type: String
+    Description: Stage of the environment
+
+Conditions:
+  IsProd: !Equals [ !Ref "Environment", "prod" ]
+
+Mappings:
+  EnvironmentMap:
+    nonprod:
+      AcmCertificateArn: "arn:aws:acm:ap-southeast-2:000884885914:certificate/db599e74-b69e-4da1-acb2-6dca083b6b6c"
+      ApiDomain: wapi.elitepartyz.com.au
+      EPZHostedZoneId: Z05453851S5NTLWAR6QL5
+      CorsAllowOrigin: "'*'"
+      PrivateSubnet1: subnet-07c7f495e9ad2ab89
+      PrivateSubnet2: subnet-06cf3c3d69e7221e5
+      CIDRBlock: 10.192.0.0/16
+      VPCID: vpc-06096bee8f883f25e
+      LambdaSecurityGroup: sg-0f8b8ce9a7269c95f
+      
+    prod:
+      AcmCertificateArn: "arn:aws:acm:ap-southeast-2:000884885914:certificate/ff650ab1-1939-4842-aabe-678ecb310a67"
+      ApiDomain: wapi.elitepartyz.com
+      EPZHostedZoneId: Z05482542FOPTW6QYGDK8
+      CorsAllowOrigin: "'*'"
+      PrivateSubnet1: subnet-00ec5bf7525f710a6
+      PrivateSubnet2: subnet-05f1b6f537e704512
+      CIDRBlock: 10.194.0.0/16
+      VPCID: vpc-0808508481d1141ae
+      LambdaSecurityGroup: sg-0ff14d6188a4092ad
+
+Resources:
+  ExpressApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      BinaryMediaTypes: ['*/*']
+      Auth:
+        ResourcePolicy:
+          IpRangeWhitelist:
+            - "54.79.48.191/32" # Prod VPN
+            - "52.62.109.78/32" # Prod VPC Nat GW
+            - "52.65.24.128/32" # Non prod VPC Nat GW
+      Domain:
+        DomainName: !FindInMap [EnvironmentMap, !Ref Environment, ApiDomain]
+        CertificateArn: !FindInMap [EnvironmentMap, !Ref Environment, AcmCertificateArn]
+        EndpointConfiguration: REGIONAL
+        BasePath:
+          - /epz
+        Route53:
+          HostedZoneId: !FindInMap [EnvironmentMap, !Ref Environment, EPZHostedZoneId]
+      StageName: !Ref Environment
+      # Cors:
+      #   AllowMethods: "'GET, POST, PUT, PATCH, DELETE, OPTIONS'"
+      #   AllowHeaders: "'content-type'"
+      #   AllowOrigin: !FindInMap [EnvironmentMap, !Ref Environment, CorsAllowOrigin]
+      #   MaxAge: "'600'"
+      #   AllowCredentials: True
+
+  APIGWNotificationLambdaGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/${ExpressLambdaFunction}'
+      RetentionInDays: !If [IsProd, 365, 30]
+
+  ExpressLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./dist
+      Handler: main.handler
+      MemorySize: 512
+      Runtime: nodejs12.x
+      Timeout: 60
+      Role: !GetAtt ExpressLambdaRole.Arn
+      VpcConfig:
+        SecurityGroupIds:
+          - !FindInMap [EnvironmentMap, !Ref Environment, LambdaSecurityGroup]
+        SubnetIds: 
+          - !FindInMap [EnvironmentMap, !Ref Environment, PrivateSubnet1]
+          - !FindInMap [EnvironmentMap, !Ref Environment, PrivateSubnet2]
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ExpressApi
+            Path: /
+            Method: ANY
+        ProxyApiGreedy:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ExpressApi
+            Path: /{proxy+}
+            Method: ANY
+  
+  ExpressLambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName:
+        !Sub '${AWS::StackName}-inline-role'
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action:
+            - sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+        Version: 2012-10-17
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSNSFullAccess
+      Policies:
+        - PolicyName: !Sub '${AWS::StackName}-inline-policy'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+            - Sid: CloudWatchLogsPolicy
+              Effect: Allow
+              Action:
+                - logs:CreateLogGroup
+                - logs:CreateLogStream
+                - logs:PutLogEvents
+                - cloudwatch:PutMetricData
+              Resource:
+                - "*"
+            - Sid: VPCPolicy
+              Effect: Allow
+              Action:
+                - ec2:CreateNetworkInterface
+                - ec2:DescribeNetworkInterfaces
+                - ec2:DeleteNetworkInterface
+              Resource:
+                - "*"
+Outputs:
+  LambdaFunctionConsoleUrl:
+    Description: Console URL for the Lambda Function.
+    Value: !Sub https://${AWS::Region}.console.aws.amazon.com/lambda/home?region=${AWS::Region}#/functions/${ExpressLambdaFunction}
+
+  ApiGatewayApiConsoleUrl:
+    Description: Console URL for the API Gateway API's Stage.
+    Value: !Sub https://${AWS::Region}.console.aws.amazon.com/apigateway/home?region=${AWS::Region}#/apis/${ExpressApi}/stages/prod
+
+  ApiUrl:
+    Description: Invoke URL for your API. Clicking this link will perform a GET request
+      on the root resource of your API.
+    Value: !Sub https://${ExpressApi}.execute-api.${AWS::Region}.amazonaws.com/prod/
+
+  LambdaFunctionName:
+    Description: Name of the Serverless Express Lambda Function
+    Value: !Ref ExpressLambdaFunction
